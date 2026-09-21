@@ -1,0 +1,165 @@
+Introduction to Cloud Computing
+-In my Credit Risk team, most of our computer systems run on our own local servers rather than the cloud. Jobs run one after another in a set order, pulling data from several source systems. This makes it hard to move everything to the cloud straight away, because the steps depend on each other and use older code that would need rework first.
+
+Our reporting is more ready for the cloud. We already use Power BI, which works well online, instead of older tools like Excel with built in macros.
+
+The main challenge with moving to the cloud is keeping our data safe, since we deal with sensitive financial information that needs strict access controls.
+
+DMoving more of our systems to the cloud could help us handle busy periods, like month end, more easily, and reduce the amount of manual work needed when something goes wrong.
+
+
+For GCAP, I would recommend replatforming rather than a full rebuild. This means moving the existing jobs and databases to the cloud with some small changes, without rewriting the whole system.
+
+The main benefit is keeping the current job logic the team already understands, while gaining better scalability during busy periods like month end and r educing manual checking when jobs run late.
+
+The main challenge is that some stored procedures are tightly linked to our on premise servers, so they would need testing and possible rework. There is also a security risk, since GCAP handles sensitive credit exposure data, so strict access controls would need to be in place.
+
+Overall, replatforming gives the best balance of improved scalability without the cost and risk of a full rebuild.
+
+﻿
+
+
+Moving to cloud services would change how my team works day to day. Using more tools like Power BI means less time maintaining servers and more time analyzing data, helping the organization scale more easily during busy periods like month end.
+
+For my own role, this would mean less manual troubleshooting when jobs fail and more focus on reporting and analysis. I would need to build stronger skills in cloud based data tools and data security, since credit risk data is sensitive.
+
+Overall, this shift would make my work more efficient but would require me to develop new technical skills to keep pace.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Network Design Concepts
+
+In my workplace, most systems follow a star topology, where devices connect back to central servers or hubs. This suits a large organization like Shell well, since it is reliable and easy to manage, and one device failing does not usually bring down the whole network.
+
+It also supports scalability, since new devices or systems can be added without disrupting everything else.
+
+One limitation is that if a central hub or server fails, everything connected to it can be affected. There can also be extra cost and complexity in maintaining the central points, especially across a large global network with many locations.
+
+
+Adopting a VPC could improve security by isolating our systems from the public internet while still allowing controlled access. It could also reduce costs, since we would not need to maintain as much physical infrastructure, and it would offer more flexibility to scale resources up or down as needed.
+
+One challenge would be migrating existing systems and data safely, especially since we handle sensitive credit exposure information. This would require careful planning around access controls and compliance.There may also be a learning curve for the team in managing a new cloud based network setup instead of the current on premise infrastructure.
+
+
+In my workplace, I would prioritize security the most. Since Credit Risk deals with sensitive financial and credit exposure data, keeping that information safe and controlling access is more important than almost anything else.
+
+Reliability is a close second, since the systems I work with, like GCAP, run scheduled jobs every day, and any downtime can delay reports and affect decision making.
+
+An example of this in practice is how access to source systems and reports is tightly controlled, with only certain teams able to view or edit sensitive credit data. Job failures are also monitored closely, with alerts sent out and manual checks in place to make sure delayed or failed jobs are picked up quickly.
+This shows that reliability and security are treated as more important than things like scalability in the current setup, since the priority is making sure data stays accurate, protected and available when needed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Introduction to Cloud Security
+
+The OWASP Top 10 lists the most common security risks in web applications and systems, like weak access controls, poor authentication and injection attacks. Understanding these helps me look at our systems, like GCAP, and check for similar weak points, such as who has access to sensitive credit data and how well that access is controlled.
+
+By knowing these common risks, I can be more careful when building or supporting tools, making sure things like user permissions, data validation and secure logins are properly considered. It also helps when reviewing existing systems, since I can spot warning signs early rather than only fixing problems after something goes wrong.
+
+Overall, this knowledge helps reduce the risk of data breaches and keeps sensitive financial information more secure.
+
+
+To improve Identity and Access Management, I could make sure only the right people have access to sensitive data, based on their role, and review these permissions regularly to remove access that is no longer needed. Using multi factor authentication would also add an extra layer of protection beyond just a password.
+
+For encryption, sensitive data like credit exposure figures should be encrypted both when stored and when being sent between systems, so it stays protected even if intercepted.
+
+In my own projects, like the FTE Allocation System, I could apply these ideas by limiting who can view or edit sensitive employee data and making sure passwords and access are properly secured.
+
+
+To start improving an incident response plan, I would first identify our key systems, like GCAP, and work out what could go wrong, such as a job failure or a security breach involving sensitive credit data. From there, clear steps would need to be written down for who does what if something happens, so the response is quick and not confused.
+
+Automated detection systems could play a big role here, since they can spot problems like failed jobs or unusual access straight away, rather than relying on someone noticing manually. This means issues get flagged and alerts sent out faster, giving the team more time to react before it becomes a bigger problem.
+
+Overall, combining a clear plan with automated monitoring would help the team respond faster and reduce the impact of any incident on sensitive data or daily operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Advanced Security and Compliance
+
+Our approach works as layered defence. Routing controls (segmented networks, firewalls) limit exposure of sensitive credit data. Cloud network security enforces access controls and encryption on hosted risk models and datasets. Security audits regularly test these controls for weaknesses. Ongoing evaluation (monitoring, alerts, patching) keeps defences current as threats evolve. Together they form a continuous cycle: routing prevents unauthorised access, cloud security protects data at rest/in transit, audits verify effectiveness, and evaluation drives improvement. A gap is that audits are often periodic rather than continuous; integrating real-time monitoring with automated audit checks would close this and strengthen overall resilience.
+Our team ensures compliance by aligning network and cloud controls with regulations like GDPR and industry standards (e.g. ISO 27001). Network segmentation restricts access to sensitive credit risk data to authorised roles only, supporting data minimisation principles. Routing protocols enforce secure, encrypted pathways for data in transit. Regular security audits check controls against regulatory requirements and flag non-compliance early. Ongoing evaluation, through monitoring and periodic policy reviews, keeps practices aligned as regulations evolve. An area for improvement would be automating compliance checks within audits, reducing manual review time and catching gaps faster across our data analytics environment.
+We identify risks through routing decisions that flag unusual traffic patterns around sensitive credit data. Cloud network security controls (access management, encryption) mitigate exposure of risk models and datasets. Regular security audits assess vulnerabilities and test whether controls still hold against current threats. Ongoing evaluation, via monitoring and threat intelligence, helps us adapt as new risks emerge. Current practices are effective but largely reactive, relying on scheduled audits rather than real-time detection. To improve, we could adopt automated threat detection and AI-driven anomaly monitoring, allowing faster identification of emerging risks and continuous adaptation to evolving technologies.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Design and Implementation of Secure Systems
+
+Shell's current cloud architecture combines on premise systems for trading and risk platforms with public cloud services like AWS and Azure for analytics and storage. A few components are missing. A proper API gateway or service mesh isn't used consistently across teams, which limits security and monitoring between services. Infrastructure as code tools such as Terraform aren't standardised either, causing configuration drift. There's also no unified data lakehouse, so risk and market data stay siloed across systems. Adding these would improve scalability, security, and consistency across Shell's cloud infrastructure, which matters given the regulatory demands of energy trading.
+Shell's cloud network architecture partially aligns with ISO/IEC 27000 standards but has gaps in areas like access control auditing and encryption consistency across regions. Some legacy systems still rely on outdated authentication methods that fall short of ISO 27001 requirements for identity management. Network segmentation between trading and risk systems is inconsistent, increasing exposure risk. To improve alignment, Shell should adopt centralized identity and access management, enforce end to end encryption for data in transit and at rest, and conduct regular third party audits. Strengthening incident response documentation would also support compliance with ISO 27035 requirements.
+Shell's cloud documentation is often spread across multiple internal platforms, making it hard to maintain consistency and find current information quickly. A more streamlined approach would involve centralizing documentation into a single knowledge base with version control, so updates are tracked and outdated material is retired automatically. Using templates for common document types such as architecture diagrams and access policies would improve consistency across teams. From my own experience building internal tools, tagging documentation by system owner and review date has proven effective, since it makes accountability clear and prevents information from becoming stale.
+
+
+
+Deployment and Management of Secure Systems
+
+Shell mainly uses Terraform for infrastructure provisioning across its cloud environments. Compared to AWS CloudFormation, Terraform is more flexible since it works across multiple cloud providers rather than being locked to AWS. Ansible is better suited to configuration management on existing servers rather than provisioning new infrastructure, since it works agentless and focuses on state enforcement. CloudFormation integrates tightly with AWS services but lacks multi cloud support. Shell's use of Terraform suits its hybrid, multi cloud setup well, allowing consistent provisioning across AWS and Azure environments while keeping infrastructure definitions version controlled and reusable across teams.
+Configuration templates can introduce risk if secrets or credentials are hardcoded, or if overly permissive access rules are copied across environments without review. To manage this securely, Shell should store templates in version controlled repositories with mandatory peer review before deployment, and use secret management tools rather than embedding credentials directly. Common pitfalls include default open network rules and unpatched base images being reused. Best practices include scanning templates for vulnerabilities before deployment, enforcing least privilege access, and regularly auditing deployed infrastructure against the template source to catch configuration drift before it becomes a security gap.
+Within Shell's risk and trading systems, AI and ML could significantly improve monitoring by detecting unusual patterns in system performance before they cause outages, which matters given the sensitivity of real time market data pipelines. Machine learning models can learn normal system behaviour and flag anomalies faster than static threshold based alerts. Predictive maintenance could use historical performance data to anticipate hardware or service failures ahead of time. Automated responses, such as scaling resources or restarting failed services, could reduce downtime without manual intervention. Applying this to Shell's dashboards would improve reliability across critical risk monitoring systems
